@@ -4,6 +4,7 @@ public abstract class Piece {
     private String ID;
     private boolean killed = false;
     private boolean white = false;
+    private int score;
   
     public Piece(boolean white){
         this.setWhite(white);
@@ -33,5 +34,13 @@ public abstract class Piece {
 
     public String ID(){
         return ID;
+    }
+
+    public int score(){
+        return score;
+    }
+
+    public void setScore(int score){
+        this.score = score;
     }
 }

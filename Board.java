@@ -1,10 +1,10 @@
 import pieces.*;
 
 public class Board {
-    private Spot[][] boardarray = new Spot[8][8];
+    public Spot[][] boardarray = new Spot[8][8];
 
     public Board(){
-        this.resetBoard();
+        resetBoard();
     }
 
     public void resetBoard(){
@@ -66,5 +66,9 @@ public class Board {
             brdStr += "\n";
         }
     return brdStr;
+    }
+
+    public void move(Spot start, Spot end){
+        start.give(end);
     }
 }
