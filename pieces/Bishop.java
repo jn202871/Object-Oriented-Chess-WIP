@@ -1,4 +1,5 @@
 package pieces;
+import logic.Spot;
 
 public class Bishop extends Piece {
 
@@ -7,6 +8,11 @@ public class Bishop extends Piece {
         super.setID("B");
         super.setScore(3);
 
+    }
+
+    public boolean checkMove(Spot start, Spot end){
+        if (legal(start, end) == false) return false;
+        return true;
     }
 
 }

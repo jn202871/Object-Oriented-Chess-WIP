@@ -1,7 +1,8 @@
+package logic;
 import pieces.*;
 
 public class Board {
-    public Spot[][] boardarray = new Spot[8][8];
+    public static Spot[][] boardarray = new Spot[8][8];
 
     public Board(){
         resetBoard();
@@ -61,7 +62,7 @@ public class Board {
         for(int i = 0; i < 8; i++){
             brdStr += i + "";
             for(int j =0; j < 8; j++){
-                brdStr += (" " + boardarray[i][j].getPiece());    
+                brdStr += (" " + boardarray[i][j].getID());    
             }
             brdStr += "\n";
         }
@@ -69,6 +70,16 @@ public class Board {
     }
 
     public void move(Spot start, Spot end){
-        start.give(end);
+        if (start.full() == false){
+            System.out.println("No Piece Selected");
+        }
+        else if (start.getPiece().checkMove(start, end)){
+            start.give(end);
+        } else System.out.println("Illegal Move");
+    }
+
+    public static boolean spotFull(int col, int row){
+        if (boardarray[row][col].full() == true) return true;
+        return false;
     }
 }

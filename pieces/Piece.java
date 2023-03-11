@@ -1,4 +1,5 @@
 package pieces;
+import logic.Spot;
 
 public abstract class Piece {
     private String ID;
@@ -29,8 +30,22 @@ public abstract class Piece {
     public void setKilled(boolean killed){
         this.killed = killed;
     }
-  
-    //public abstract boolean canMove(Board board, Spot start, Spot end);
+
+    public abstract boolean checkMove(Spot start, Spot end);
+
+    public boolean legal(Spot start, Spot end){
+        if (start == end){
+            System.out.println("Cannot Move To Same Spot");
+            return false;
+        }
+        if (end.full()){
+            if (start.getPiece().isWhite() == end.getPiece().isWhite()){
+                System.out.println("Cannot Take Own Piece");
+                return false;
+            }
+        }
+        return true;
+    }
 
     public String ID(){
         return ID;

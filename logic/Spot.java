@@ -1,3 +1,4 @@
+package logic;
 import pieces.Piece;
 
 public class Spot {
@@ -6,7 +7,7 @@ public class Spot {
     private int x;
     private int y;
 
-    public Spot(int x, int y, Piece p){
+    public Spot(int y, int x, Piece p){
         this.piece = p;
         if (this.piece != null){
         this.Occupy = piece.ID();
@@ -15,7 +16,7 @@ public class Spot {
         this.y = y;
     }
 
-    public String getPiece(){
+    public String getID(){
         return Occupy;
     }
 
@@ -33,5 +34,22 @@ public class Spot {
         this.piece = null;
         this.Occupy = ".";
         next.recieve(temp);
+    }
+
+    public Piece getPiece(){
+        return piece;
+    }
+
+    public int xVal(){
+        return x;
+    }
+
+    public int yVal(){
+        return y;
+    }
+
+    public boolean full(){
+        if (piece == null) return false;
+        else return true; 
     }
 }
